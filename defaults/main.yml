@@ -1,0 +1,5 @@
+---
+# defaults file for roles/ansible-role-adauth
+krb5_allow_weak_crypto: False
+
+sssd_service: sssd

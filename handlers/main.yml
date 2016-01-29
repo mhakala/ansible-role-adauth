@@ -1,0 +1,10 @@
+---
+# handlers file for roles/ansible-role-adauth
+
+- name: copy keytab
+  copy: src=/etc/krb5.keytab dest=/share/ansible/nodes/{{ inventory_hostname }}/krb5.keytab
+
+- name: restart_sssd
+  service:
+    name: "{{ sssd_service }}"
+    state: restarted

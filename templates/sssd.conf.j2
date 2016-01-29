@@ -1,0 +1,69 @@
+[sssd]
+config_file_version = 2
+services = nss, pam
+domains = {{ adauth_realm }}
+
+[nss]
+filter_groups = root,apache,oracle,tomcat,shibd,postgres,mysql,pse_d,pse_ds,pse_dt,pse_gen,zabbix,postfix,httpd
+filter_users = root,apache,oracle,tomcat,shibd,postgres,mysql,postfix,zabbix,httpd,pse_d0,pse_d1,pse_ds0,pse_ds1,pse_dt0,pse_dt1,pse_dt2
+override_homedir = /home/%u
+
+[pam]
+
+[domain/{{ adauth_realm }}]
+dns_discovery_domain = {{ adauth_realm | lower }}
+description = LDAP domain with AD server
+cache_credentials = false
+enumerate = false
+min_id = 1000
+# AD is case insensitive
+case_sensitive = false
+id_provider = ldap
+auth_provider = krb5
+chpass_provider = krb5
+access_provider = ldap
+krb5_realm = {{ adauth_realm }}
+krb5_auth_timeout = 15
+krb5_validate = true
+krb5_renewable_lifetime = 35000
+krb5_renew_interval = 6000
+krb5_lifetime = 604800
+krb5_canonicalize = false
+krb5_use_enterprise_principal = true
+ldap_access_order = expire
+ldap_account_expire_policy = ad
+ldap_pwd_policy = mit_kerberos
+ldap_sasl_mech = gssapi
+ldap_sasl_canonicalize = true
+ldap_krb5_keytab = /etc/krb5.keytab
+ldap_krb5_init_creds = true
+ldap_krb5_ticket_lifetime = 86400 
+ldap_referrals = false
+ldap_search_timeout = 15
+ldap_tls_cacertdir = /etc/openldap/cacerts
+ldap_tls_reqcert = demand
+ldap_schema = rfc2307
+ldap_user_search_base = {{ ldap_user_search_base }}
+ldap_user_search_scope = sub
+ldap_group_search_base = {{ ldap_group_search_base }}
+ldap_group_search_scope = sub
+ldap_group_nesting_level = 5
+
+ldap_user_object_class = user
+ldap_user_name = sAMAccountName
+ldap_user_uid_number = uidNumber
+ldap_user_gid_number = gidNumber
+ldap_user_home_directory = unixHomeDirectory
+ldap_user_shell = loginShell
+# https://fedorahosted.org/sssd/ticket/1749
+ldap_user_principal = sAMAccountName
+ldap_user_member_of = MemberOf
+ldap_user_fullname = cn
+
+ldap_group_object_class = group
+ldap_group_name = sAMAccountName
+ldap_group_gid_number = gidNumber
+ldap_group_member = memberUid
+
+ldap_force_upper_case_realm = true
+
