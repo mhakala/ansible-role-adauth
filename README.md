@@ -16,13 +16,16 @@ Assumes network is fully configured including DNS and FQDN of the server.
 Role Variables
 --------------
 
+see defaults/main.yml
+
+<pre>
 siteDomain             (default: none)  : name of the dns-domain. Used in krb5.conf.
 adauth_realm           (default: none)  : name of the ActiveDirectory realm
 krb5_allow_weak_crypto (default: false) : allow krb5 weak crypto algorithms
 ldap_user_search_base  (default: none)  : ActiveDirectory search base for users
 ldap_group_search_base (default: none)  : ActiveDirectory search base for groups
 keytab_root_dir        (default: none)  : network directory path to store created krb5-keytab files
-
+</pre>
 
 Dependencies
 ------------
