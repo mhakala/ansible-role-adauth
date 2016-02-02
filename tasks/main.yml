@@ -2,4 +2,4 @@
 # tasks file for roles/ansible-role-adauth
 
 - include: redhat.yml
-  when: ad_enabled and ansible_os_family == "RedHat"
+  when: adauth_enabled and ansible_os_family == "RedHat"

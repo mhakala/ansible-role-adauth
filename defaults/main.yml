@@ -4,4 +4,4 @@ krb5_allow_weak_crypto: False
 
 sssd_service: sssd
 
-ad_enabled: False
+adauth_enabled: False
