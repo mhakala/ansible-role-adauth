@@ -36,7 +36,11 @@
 - name: Generate new keytab and copy that to network share
   command: adcli join -D {{ adauth_realm | lower }} --one-time-password={{ adauth_one_time_password }} -O "{{ ad_organization_unit }}"
   when: (krb5_keytab.stat.exists == False and network_krb5_keytab.stat.exists == False )
-  notify: copy keytab
+# notify: copy keytab
+
+- name: Copy the keytab to the network share
+  copy: src=/etc/krb5.keytab dest={{ keytab_root_dir }}/{{ inventory_hostname }}/krb5.keytab
+  when: (krb5_keytab.stat.exists == True and network_krb5_keytab.stat.exists == False )
 
 # sssd
 - name: Configure sssd integration with AD
