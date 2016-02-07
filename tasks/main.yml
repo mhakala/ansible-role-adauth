@@ -39,7 +39,7 @@
 # sssd
 - name: Configure sssd integration with AD
   template: src=sssd.conf.j2 dest=/etc/sssd/sssd.conf
-            owner=root group=root mode=644
+            owner=root group=root mode=600
   notify: restart_sssd
 
 - name: sssd enabled and running
