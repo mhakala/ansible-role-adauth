@@ -7,6 +7,7 @@
     - adcli
     - sssd-krb5
     - sssd-ldap
+    - sssd-common-pac
     - krb5-workstation
 
 # krb5.conf
