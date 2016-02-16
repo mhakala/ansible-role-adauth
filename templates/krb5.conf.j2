@@ -8,6 +8,7 @@
  allow_weak_crypto = yes
 {% endif %}
  default_keytab_name = FILE:/etc/krb5.keytab
+ default_ccache_name = KEYRING:persistent:%{uid}
  default_realm = {{ adauth_realm }}
  ticket_lifetime = 24h
  # AD doesn't allow more
