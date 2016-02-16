@@ -56,7 +56,9 @@ ldap_user_gid_number = gidNumber
 ldap_user_home_directory = unixHomeDirectory
 ldap_user_shell = loginShell
 # https://fedorahosted.org/sssd/ticket/1749
-ldap_user_principal = sAMAccountName
+#ldap_user_principal = sAMAccountName
+# https://fedorahosted.org/sssd/ticket/2330
+ldap_user_principal = nosuchattribute
 ldap_user_member_of = MemberOf
 ldap_user_fullname = cn
 
