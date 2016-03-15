@@ -28,7 +28,7 @@
  .{{ siteDomain }} = {{ adauth_realm }}
  .{{ adauth_realm | lower }} = {{ adauth_realm }}
  {{ adauth_realm | lower }} = {{ adauth_realm }}
- .local = {{ adauth_realm }}
+ .{{ intDomain }}.{{ siteDomain }} = {{ adauth_realm }}
 
 [appdefaults]
  pam = {
