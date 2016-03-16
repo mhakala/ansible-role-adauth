@@ -34,7 +34,7 @@
 # notify: copy keytab
 
 - name: Copy the keytab to the network share
-  fetch: src=/etc/krb5.keytab dest={{ keytab_root_dir }}/{{ inventory_hostname }}/krb5.keytab
+  fetch: src=/etc/krb5.keytab dest={{ keytab_root_dir }}/{{ inventory_hostname }}/krb5.keytab flat=yes
   when: (krb5_keytab.stat.exists == True and network_krb5_keytab.stat.exists == False )
 
 # sssd
