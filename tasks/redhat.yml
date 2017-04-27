@@ -47,6 +47,6 @@
   service:
     name: "{{ sssd_service }}"
     enabled: true
-    state: running
+    state: started
 
 # actual configuration for NSS and PAM should be in another module to allow flexibility with other authentication methods
