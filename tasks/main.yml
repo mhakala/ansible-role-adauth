@@ -3,6 +3,6 @@
 
 # actual configuration for NSS and PAM should be in another module to allow flexibility with other authentication methods
 
-- include: redhat.yml
+- include_tasks: redhat.yml
   when: adauth_enabled and ansible_os_family == "RedHat"
 
