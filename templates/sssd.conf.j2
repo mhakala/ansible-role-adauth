@@ -68,5 +68,9 @@ ldap_group_name = sAMAccountName
 ldap_group_gid_number = gidNumber
 ldap_group_member = memberUid
 
+{% if sssd_auto_private_groups is defined %}
+auto_private_groups = {{ sssd_auto_private_groups }}
+{% endif %}
+
 ldap_force_upper_case_realm = true
 
