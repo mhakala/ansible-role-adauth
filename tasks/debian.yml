@@ -1,13 +1,21 @@
 ---
 # tasks file for roles/ansible-role-adauth
 
+
+- name: Run apt-get update
+  apt:
+    update_cache: yes
+    cache_valid_time: 3600
+
 - name: Install Kerberos and sssd-clients
-  yum: 
+  apt: 
     name: 
       - adcli
       - sssd-krb5
       - sssd-ldap
-      - sssd-common-pac
-      - krb5-workstation
+      - sssd-ad
+      - sssd-tools
+      - sssd-krb5
+      - krb5-user
     state: present
 

@@ -6,3 +6,9 @@
 - include_tasks: redhat.yml
   when: adauth_enabled and ansible_os_family == "RedHat"
 
+- include_tasks: debian.yml
+  when: adauth_enabled and ansible_os_family == "Debian"
+
+- include_tasks: common.yml
+  when: adauth_enabled
+

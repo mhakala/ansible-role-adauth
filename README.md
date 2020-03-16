@@ -6,7 +6,7 @@ Joins linux server to MS Windows active directory and manages authentication via
 - kerberos setttings
 - sssd service
 
-Tested on EL7
+Tested on EL7, Ubuntu 18.04
 
 Requirements
 ------------
