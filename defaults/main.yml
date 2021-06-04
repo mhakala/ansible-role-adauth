@@ -2,6 +2,8 @@
 # defaults file for roles/ansible-role-adauth
 krb5_allow_weak_crypto: False
 
-sssd_service: sssd
-
 adauth_enabled: False
+
+sssd_service: sssd
+sssd_ldap_schema: rfc2307
+sssd_ldap_group_nesting_level: 3

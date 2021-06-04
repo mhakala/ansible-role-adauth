@@ -43,30 +43,21 @@ ldap_referrals = false
 ldap_search_timeout = 15
 ldap_tls_cacertdir = /etc/openldap/cacerts
 ldap_tls_reqcert = demand
-ldap_schema = rfc2307
+ldap_schema = {{ sssd_ldap_schema }}
 ldap_user_search_base = {{ ldap_user_search_base }}
-ldap_user_search_scope = sub
 ldap_group_search_base = {{ ldap_group_search_base }}
-ldap_group_search_scope = sub
-ldap_group_nesting_level = 5
+ldap_group_nesting_level =  {{ sssd_ldap_group_nesting_level }}
 
 ldap_user_object_class = user
 ldap_user_name = sAMAccountName
-ldap_user_uid_number = uidNumber
-ldap_user_gid_number = gidNumber
 ldap_user_home_directory = unixHomeDirectory
-ldap_user_shell = loginShell
 # https://fedorahosted.org/sssd/ticket/1749
-#ldap_user_principal = sAMAccountName
+ldap_user_principal = sAMAccountName
 # https://fedorahosted.org/sssd/ticket/2330
-ldap_user_principal = nosuchattribute
-ldap_user_member_of = MemberOf
-ldap_user_fullname = cn
+#ldap_user_principal = nosuchattribute
 
 ldap_group_object_class = group
 ldap_group_name = sAMAccountName
-ldap_group_gid_number = gidNumber
-ldap_group_member = memberUid
 
 {% if sssd_auto_private_groups is defined %}
 auto_private_groups = {{ sssd_auto_private_groups }}
